@@ -9,6 +9,10 @@ self.addEventListener('install', function(event) {
   ];
 
   event.waitUntil(
+    caches.open('wittr-static-v1').then(function(cache) {
+        console.log("Cache opened");
+        return cache.addAll(urlsToCache);
+    })
     // TODO: open a cache named 'wittr-static-v1'
     // Add cache the urls from urlsToCache
   );
